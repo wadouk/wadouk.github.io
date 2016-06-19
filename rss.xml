@@ -1,0 +1,10 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Mon site</title>
+    <description>Hello world</description>
+    <link>https://wadouk.github.io</link>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+  </channel>
+</rss>
