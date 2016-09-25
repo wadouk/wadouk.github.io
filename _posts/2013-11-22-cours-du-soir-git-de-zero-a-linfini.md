@@ -1,13 +1,10 @@
 ---
 layout: post
 ---
-Chez Valtech, nous animons des cours du soir, car nous croyons beaucoup au partage et à l'amélioration continue.
-
-Hier soir, j'ai moi-même animé un cours du soir sur git, que j'avais intitulé "Git: de Zéro à l'Infini".
+Chez Valtech, nous animons des cours du soir, car nous croyons beaucoup au partage et à l'amélioration continue. Hier soir, j'ai moi-même animé un cours du soir sur git, que j'avais intitulé "Git: de Zéro à l'Infini".
 
 On a commencé par voir pourquoi Git? puis les bases, le vocabulaire et on a terminé en abordant rapidement la gestion de feature.
 
-<!--more-->
 ![Les participants](/a/photo-2.jpg)
 *Les participants*
 
@@ -26,20 +23,20 @@ Une fois que vous aurez l'habitude, connaitrez le vocabulaire, un client graphiq
 <pre lang="bash">git help
 git help commit</pre>
 Comme on m'a demandé plusieurs fois si j'avais un support, je vais vous lister ici quelques pointeurs vers des éléments que je trouve intéressant :
-<ul>
-	<li><a href="http://git-scm.com/book/fr">La bible sur Git : ProGit</a></li>
-	<li><a href="http://ndpsoftware.com/git-cheatsheet.html">Les différents espaces de travail de git : une référence qui aide à comprendre les différents espaces de travail, graphiquement</a></li>
-	<li><a href="http://sethrobertson.github.io/GitBestPractices/">Un ensemble de bonnes pratique</a></li>
-	<li><a href="http://www.git-attitude.fr/2013/04/03/configuration-git/">Bien configurer</a></li>
-	<li><a href="http://sebastian.lemerdy.name/general/2012/10/09/I-finally-found-a-better-GitX-which-is-GitX.html">Un client graphique pour Mac</a></li>
-	<li><a href="http://www.maketecheasier.com/6-useful-graphical-git-client-for-linux/">D'autres clients graphiques pour linux</a></li>
-	<li><a href="http://blogs.atlassian.com/2013/11/dont-move-to-git/">Un contre argumentaire</a></li>
-	<li><a href="https://github.com/jonas/tig">Un outil sous linux qui permet de faire des ajouts interactif, valider des portions de fichier</a></li>
-	<li><a href="https://github.com/pmiossec/tig-cheat-sheet/releases">Tig cheat sheet (de </a><a href="http://twitter.com/pmiossec">@pmiossec)</a></li>
-	<li><a href="http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/">Gestion des multiples modules d'un projet</a></li>
-	<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></li>
-</ul>
-Bonus, à ne pas copier-coller, <a href="https://www.kernel.org/pub/software/scm/git/docs/git-log.html">liser la doc</a> pour comprendre ce qu'il se passe :
+
+ - [La bible sur Git : ProGit](http://git-scm.com/book/fr)
+ - [Les différents espaces de travail de git : une référence qui aide à comprendre les différents espaces de travail, graphiquement](http://ndpsoftware.com/git-cheatsheet.html)
+ - [Un ensemble de bonnes pratique](http://sethrobertson.github.io/GitBestPractices/)
+ - [Bien configurer](http://www.git-attitude.fr/2013/04/03/configuration-git/)
+ - [Un client graphique pour Mac](http://sebastian.lemerdy.name/general/2012/10/09/I-finally-found-a-better-GitX-which-is-GitX.html)
+ - [D'autres clients graphiques pour linux](http://www.maketecheasier.com/6-useful-graphical-git-client-for-linux/)
+ - [Un contre argumentaire](http://blogs.atlassian.com/2013/11/dont-move-to-git/)
+ - [Un outil sous linux qui permet de faire des ajouts interactif, valider des portions de fichier](https://github.com/jonas/tig)
+ - [@pmiossec)](https://github.com/pmiossec/tig-cheat-sheet/releases">Tig cheat sheet (de </a><a href="http://twitter.com/pmiossec)
+ - [Gestion des multiples modules d'un projet](http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/)
+ - [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+
+Bonus, à ne pas copier-coller, [liser la doc](https://www.kernel.org/pub/software/scm/git/docs/git-log.html) pour comprendre ce qu'il se passe :
 J'avais fait une démo de l'une des commandes qu'il m'arrive d'utiliser afin d'avoir un git log lisible, en tout cas coloré
 
 ![git-lg](/a/gitlg.png)
