@@ -9,7 +9,9 @@ Commençons par le contexte : la conférence de Guillaume Duquesnay : avaler la 
 
 <!--more-->
 
-[caption id="" align="aligncenter" width="602"]<img class=" " style="margin: 2px;" title="Comment faciliter la collaboration distante ?" src="http://facilitation-distante.fr/wp-content/uploads/2010/08/cropped-banni%C3%A8re2.jpg" alt="Comment faciliter la collaboration distante ?" width="602" height="126" /> Ce qu'est la facilitation distante ? de gauche à droite : le plouf, le "téléphone arabe", le message ne passe pas à cause de la faiblesse du canal, la communication passe mais très difficilement, le facilitateur reste zen et rapproche les gens, pendant la communication d'autres événements vous perturbe, le canal est trop faible : votre comm ne passe plus s'entasse bouchonne, mais avec la baguette magique : on arrive à partager.[/caption]
+![Comment faciliter la collaboration distante ?](/a/cropped-bannière2.jpg)
+
+Ce qu'est la facilitation distante ? de gauche à droite : le plouf, le "téléphone arabe", le message ne passe pas à cause de la faiblesse du canal, la communication passe mais très difficilement, le facilitateur reste zen et rapproche les gens, pendant la communication d'autres événements vous perturbe, le canal est trop faible : votre comm ne passe plus s'entasse bouchonne, mais avec la baguette magique : on arrive à partager.[/caption]
 
 Il n’y a pour l’instant pas de <strong>définition</strong> officielle mais je vais néanmoins me risquer à en proposer une : la facilitation consiste en un ensemble de techniques qui permettent de renforcer, fluidifier et élargir les canaux de communications afin de faire transiter le plus richement possible les idées entre les différents intervenants. Cette facilitation est autant nécessaire dans les échanges humains réels que dans ceux numériques, dématérialisés, distribué, distant. Le problème vient bien du fait que nous sommes tous différents, des références personnelles variées, qu’un mot ou une idée n’a pas la même signification entre deux individus. Ces interactions peuvent alors profiter des médias numériques ou plutôt s’en contenter: mail, tchat, forum, wiki, visioconférence, voip …
 
@@ -47,7 +49,11 @@ Toutes les communications distantes sont, par nature, asynchrones, vous ne pouve
 	<li>Dans un tchat, le statut vous dit si votre correspondant est présent ou non, mais comme le téléphone, la fenêtre peut rester ouverte et votre correspondant peut ne la voir que beaucoup plus tard. Pour certains produits, vous pouvez même envoyer votre message à une personne déconnectée. Celle-ci ne recevra votre message que plus tard</li>
 	<li>…</li>
 </ul>
-[caption id="attachment_1948" align="alignright" width="227"]<a href="http://blog.valtech.fr/wp-content/uploads/58759_1638916492118_1212931456_1769054_1848650_n.jpg"><img class="size-full wp-image-1948" style="margin: 2px;" title="Les champs Elysées sous un arc en ciel" src="http://blog.valtech.fr/wp-content/uploads/58759_1638916492118_1212931456_1769054_1848650_n.jpg" alt="Les champs Elysées sous un arc en ciel" width="227" height="302" /></a> Je vous offre cette image que j'ai prise à la fin de cette journée : les champs Élysée sous deux magnifiques arcs-en-ciel. Il a dû pleuvoir. Maintenant le soleil revient.[/caption]
+
+![Les champs Elysées sous un arc en ciel](/a/58759_1638916492118_1212931456_1769054_1848650_n.jpg)
+*Les champs Elysées sous un arc en ciel*
+
+ Je vous offre cette image que j'ai prise à la fin de cette journée : les champs Élysée sous deux magnifiques arcs-en-ciel. Il a dû pleuvoir. Maintenant le soleil revient.[/caption]
 
 Bref, comme vous pouvez le constater au travers de la longueur de cet article, nous avons énormément échangé. Pour vaincre le plouf, nous avons terminé par retranscrire les différentes sessions sur le site promptement ouvert. Les différents articles ont été retirés depuis : ils sont en attente de relecture.
 

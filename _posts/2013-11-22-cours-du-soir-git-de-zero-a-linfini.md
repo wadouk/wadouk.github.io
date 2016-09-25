@@ -8,16 +8,18 @@ Hier soir, j'ai moi-même animé un cours du soir sur git, que j'avais intitulé
 On a commencé par voir pourquoi Git? puis les bases, le vocabulaire et on a terminé en abordant rapidement la gestion de feature.
 
 <!--more-->
-
-[caption id="attachment_8483" align="alignnone" width="461"]<img class=" wp-image-8483 " title="Les participants" src="http://blog.valtech.fr/wp-content/uploads/photo-2.jpg" alt="Les participants" width="461" height="346" /> Les participants[/caption]
+![Les participants](/a/photo-2.jpg)
+*Les participants*
 
 Les différents mots clefs abordés
 
-[caption id="attachment_8485" align="alignnone" width="461"]<img class="wp-image-8485 " title="Git : le vocabualire" src="http://blog.valtech.fr/wp-content/uploads/photo-41.jpg" alt="Git : le vocabualire" width="461" height="346" /> Git : le vocabualire[/caption]
+![Git : le vocabualire](/a/photo-41.jpg)
+*Git : le vocabualire*
 
 Les cours du soir sont aussi un moment informel de partage, d'échange afin de par exemple simplement se rencontrer, échanger sur un sujet souvent technique, mais surtout de ne pas se prendre au sérieux. On en profite d'ailleurs souvent pour se faire une petite bouffe ensemble après.
 
-[caption id="attachment_8484" align="alignnone" width="461"]<img class=" wp-image-8484 " title="Le GO : alias le clown" src="http://blog.valtech.fr/wp-content/uploads/photo-3.jpg" alt="Le GO : alias le clown" width="461" height="346" /> Le GO : alias le clown[/caption]
+![Le GO : alias le clown](/a/photo-3.jpg)
+*Le GO : alias le clown*
 
 On m'a souvent demandé si je préférais la ligne de commande ou un client graphique : la ligne de commande est indispensable pour comprendre ce que l'on fait, elle est verbeuse, elle vous donne pleins d'information et vous prévient en cas d'opération "hasardeuse" pour un novice.
 Une fois que vous aurez l'habitude, connaitrez le vocabulaire, un client graphique pourra vous aider, mais par pitié, commencé par la ligne de commande et les pages d'aides
@@ -39,7 +41,8 @@ Comme on m'a demandé plusieurs fois si j'avais un support, je vais vous lister 
 </ul>
 Bonus, à ne pas copier-coller, <a href="https://www.kernel.org/pub/software/scm/git/docs/git-log.html">liser la doc</a> pour comprendre ce qu'il se passe :
 J'avais fait une démo de l'une des commandes qu'il m'arrive d'utiliser afin d'avoir un git log lisible, en tout cas coloré
-<img class="aligncenter size-full wp-image-8505" src="http://blog.valtech.fr/wp-content/uploads/gitlg.png" alt="gitlg" width="1427" height="436" />
+
+![git-lg](/a/gitlg.png)
 La commande :
 <pre lang="bash">[alias]
 lg=log --graph --pretty=format:'%Cred%h%Creset%C(green bold)%d%Creset %s %Cgreen(%cr) %C(bold blue)%aN%Creset' --abbrev-commit --all</pre>
