@@ -42,7 +42,7 @@ que [politologue](https://politogue.com) a agrégé, je refais un calcul.
  | Date | Déces du jour | Taux                                  | 
  | ---- | ------------- | ------------------------------------- | 
  | d1   | m1+m2+m3    | ( m1 - m2 ) / m2                      |
- | d2   | m2+m3    | ( m2 - m3 ) / m2                    | 
+ | d2   | m2+m3    | ( m2 - m3 ) / m3                    | 
  | d3   | m3    |  NA                                    | 
  | d4   | 0     |  NA                                    | 
 
