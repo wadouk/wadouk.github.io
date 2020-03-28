@@ -29,7 +29,7 @@ que [politologue](https://politogue.com) a agrégé, je refais un calcul.
  - Il faut commencer par faire la différence entre la veille et aujourdhui
  - Puis calcul le pourcentage d'accroissement
  
- ## Au début
+ ## Une manière de représenter les calculs
  
  d1 = aujourdhui
  
@@ -39,20 +39,12 @@ que [politologue](https://politogue.com) a agrégé, je refais un calcul.
  
  d4 = la veille de l'épidémie
  
- | Date | Déces |
- | ---- | ------| 
- | d1   | m1    | 
- | d2   | m2    | 
- | d3   | m3    | 
- | d4   | 0     | 
-
-## Ce qui donne
  | Date | Déces du jour | Taux                                  | 
  | ---- | ------------- | ------------------------------------- | 
- | d1   | m2-m1         | ( (m2 - m1) - (m3 - m2) ) / (m3 - m2) |
- | d2   | m3-m2         | (m3-m2) / (m3)                        | 
- | d3   | m3            | NA                                    | 
- | d4   | 0             | NA                                    | 
+ | d1   | m1+m2+m3    | ( m1 - m2 ) / m2                      |
+ | d2   | m2+m3    | ( m2 - m3 ) / m2                    | 
+ | d3   | m3    |  NA                                    | 
+ | d4   | 0     |  NA                                    | 
 
 # Mise en application
 
