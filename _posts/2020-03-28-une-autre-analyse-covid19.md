@@ -56,3 +56,4 @@ On a du mal à décider sans mesurer, et encore plus en temps de crise. Voici un
 
 On voit que les mesures prises ont une efficacité toute relative. Je pensais de prime abords que les mesures prisent étaient inefficaces, 
 mais quand on regarde un pays comme l'Angleterre ou les États-Unis, on voit que ça pourrait être encore pire ... mais ce n'est qu'un sophisme de plus.
+
