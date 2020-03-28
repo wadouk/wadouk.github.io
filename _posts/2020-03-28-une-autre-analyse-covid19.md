@@ -3,13 +3,11 @@ layout: post
 title : Je me posais la question de l'efficacité en France du confinement
 ---
 
-# Combat de chiffre
-
 On trouve beaucoup d'interprétation statistique de la progression de la pandémie.
-
 Macron avait parlé de ralentir la progression de l'épidémie, faudrait plutôt l'arréter.
-
 On parle d'applatir la courbe mais encore faudrait il déjà qu'elle monte moins vite.
+
+# Combat de chiffre
 
 Pour ce faire j'ai préféré un autre indicateur, le **pourcentage de croissance** :
  - si le chiffre monte, la mortalité augmente de jours en jours
