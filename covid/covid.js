@@ -82,11 +82,11 @@ fetch('pctgrowcovid.csv')
       c.update()
     }
 
-    if (window.localStorage.hasItem('limity')) {
+    if (window.localStorage.getItem('limity')) {
       limitYElem.checked = window.localStorage.getItem('limity') === 'true';
       toggleScaleofYAxe(limitYElem.checked)
     }
-    if (window.localStorage.hasItem('pays')) {
+    if (window.localStorage.getItem('pays')) {
       selectPays.value =  window.localStorage.getItem('pays')
       displayDataForCountry(selectPays.value)
     }
