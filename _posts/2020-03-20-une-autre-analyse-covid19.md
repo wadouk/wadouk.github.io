@@ -18,4 +18,4 @@ Pour ce faire j'ai préféré un autre indicateur, le **pourcentage de croissanc
 
 [évolution de la mortalité](/covid)
 
- <iframe src='/covid' width=800 height=600><iframe>
+<iframe src='/covid' width=800 height=600><iframe>
