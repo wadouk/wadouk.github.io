@@ -24,7 +24,7 @@ Pour ce faire j'ai préféré un autre indicateur, le **pourcentage de croissanc
 # Comment sont fait les calculs
 
 A partir des données [open data](https://www.data.gouv.fr/fr/datasets/coronavirus-covid19-evolution-par-pays-et-dans-le-monde-maj-quotidienne/#_) 
-que [politologue](https://politogue.com) a agrégé, je refais un calcul. 
+que [politologue](https://coronavirus.politologue.com/) a agrégé, je refais un calcul. 
  - Ce qu'il mets à dispo est le nombre de morts cumulé
  - Il faut commencer par faire la différence entre la veille et aujourdhui
  - Puis calcul le pourcentage d'accroissement
