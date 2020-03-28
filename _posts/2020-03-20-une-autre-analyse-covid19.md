@@ -16,4 +16,4 @@ Pour ce faire j'ai préféré un autre indicateur, le **pourcentage de croissanc
  - si on est en dessous de zéro, c´est gagné !
  
 
-[évolution de la mortalité](/covid)
+Je vous invite donc à aller voir les résultats [évolution de la mortalité](/covid).
