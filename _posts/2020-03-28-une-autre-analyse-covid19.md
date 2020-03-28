@@ -44,15 +44,15 @@ que [politologue](https://politogue.com) a agrégé, je refais un calcul.
  | d1   | m1    | 
  | d2   | m2    | 
  | d3   | m3    | 
- | d4   | 0    | 
+ | d4   | 0     | 
 
 ## Ce qui donne
- | Date | Déces du jour | Taux | 
- | ---- | ------| --- | 
- | d1   | m2-m1 | ( (m2 - m1) - (m3 - m2) ) / (m3 - m2) |
- | d2   | m3-m2 | (m3-m2) / (m3) | 
- | d3   | m3    | NA | 
- | d4   | 0    | NA | 
+ | Date | Déces du jour | Taux                                  | 
+ | ---- | ------------- | ------------------------------------- | 
+ | d1   | m2-m1         | ( (m2 - m1) - (m3 - m2) ) / (m3 - m2) |
+ | d2   | m3-m2         | (m3-m2) / (m3)                        | 
+ | d3   | m3            | NA                                    | 
+ | d4   | 0             | NA                                    | 
 
 # Mise en application
 
