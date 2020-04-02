@@ -16,8 +16,14 @@ fetch('pctgrowcovid.csv')
           yAxes: [{
             scaleLabel: {
               display: true,
-              labelString: '% croissance',
+              labelString: 'croissance'
             },
+            ticks: {
+              callback: (v, a, b) => {
+                console.log({v, a, b})
+                return `${v * 100} %`
+              }
+            }
           }],
           xAxes: [{
             scaleLabel: {
@@ -49,10 +55,9 @@ fetch('pctgrowcovid.csv')
     function toggleScaleofYAxe(v) {
       window.localStorage.setItem('limity', v)
       if (v) {
-        c.options.scales.yAxes[0].ticks.min = -0.5
-        c.options.scales.yAxes[0].ticks.max = 1
+        c.options.scales.yAxes[0].ticks = {...c.options.scales.yAxes[0].ticks , min: -0.5, max : 1}
       } else {
-        c.options.scales.yAxes[0].ticks = {}
+        c.options.scales.yAxes[0].ticks = {...c.options.scales.yAxes[0].ticks , min: undefined, max : undefined}
       }
 
       c.update()
