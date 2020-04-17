@@ -116,11 +116,14 @@ fetch('pctgrowcovid.csv')
       window.localStorage.setItem('limity', v)
       if (v) {
         c.options.scales.yAxes[0].ticks = {...c.options.scales.yAxes[0].ticks , min: -0.5, max : 1}
+        c3.options.scales.yAxes[0].ticks = {...c3.options.scales.yAxes[0].ticks , min: -0.5, max : 1}
       } else {
         c.options.scales.yAxes[0].ticks = {...c.options.scales.yAxes[0].ticks , min: undefined, max : undefined}
+        c3.options.scales.yAxes[0].ticks = {...c3.options.scales.yAxes[0].ticks , min: undefined, max : undefined}
       }
 
       c.update()
+      c3.update()
     }
 
     limitYElem.addEventListener('click', (e) => {
