@@ -20,7 +20,6 @@ fetch('pctgrowcovid.csv')
             },
             ticks: {
               callback: (v, a, b) => {
-                console.log({v, a, b})
                 return `${v * 100} %`
               }
             }
@@ -78,10 +77,22 @@ fetch('pctgrowcovid.csv')
         borderColor: 'lightBlue',
         options: {},
       }, {
-        label: 'moyenne mobile sur 7 jours',
+        label: 'Mortalité (moy 7j)',
         data: data.map(v => v[7]),
         fill: false,
         borderColor: 'blue',
+        options: {},
+      }, {
+        label: 'Infections',
+        data: data.map(v => v[11]),
+        fill: false,
+        borderColor: 'lightGreen',
+        options: {},
+      }, {
+        label: 'Infections (moy 7j)',
+        data: data.map(v => v[12]),
+        fill: false,
+        borderColor: 'green',
         options: {},
       }]
       c.update()
