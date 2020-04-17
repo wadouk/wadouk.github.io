@@ -4,7 +4,9 @@ fetch('pctgrowcovid.csv')
     const d = t.split('\n').filter(Boolean).map(v => v.split(',')).slice(1)
     const countries = d.reduce((a, b) => a.add(b[1].replace(/\"/g, "")), new Set())
 
-    var ctx = document.getElementById('myChart').getContext('2d')
+    const ctx = document.getElementById('myChart').getContext('2d')
+    const ctx2 = document.getElementById('myChart2').getContext('2d')
+    const ctx3 = document.getElementById('myChart3').getContext('2d')
 
     const c = new Chart(ctx, {
       type: 'line',
@@ -21,6 +23,65 @@ fetch('pctgrowcovid.csv')
             ticks: {
               callback: (v, a, b) => {
                 return `${v * 100} %`
+              }
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Date',
+            },
+          }],
+        },
+      },
+    })
+    const c3 = new Chart(ctx3, {
+      type: 'line',
+      options: {
+        animation: {
+          duration: 0,
+        },
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'croissance'
+            },
+            ticks: {
+              callback: (v, a, b) => {
+                return `${v * 100} %`
+              }
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Date',
+            },
+          }],
+        },
+      },
+    })
+
+    const c2 = new Chart(ctx2, {
+      type: 'line',
+      options: {
+        animation: {
+          duration: 0,
+        },
+        scales: {
+          yAxes: [{
+            type: 'logarithmic',
+            ticks: {
+              autoSkipPadding: 100,
+              callback: (v, a, b) => {
+                if (v > 1000) {
+                  if (v > 1000000) {
+                    return v / 1000000 + 'M'
+                  }
+                  return v / 1000 + 'k'
+                }
+                return v
               }
             }
           }],
@@ -82,7 +143,10 @@ fetch('pctgrowcovid.csv')
         fill: false,
         borderColor: 'blue',
         options: {},
-      }, {
+      }]
+
+      c3.data.labels = data.map(v => v[0])
+      c3.data.datasets = [{
         label: 'Infections',
         data: data.map(v => v[11]),
         fill: false,
@@ -95,7 +159,18 @@ fetch('pctgrowcovid.csv')
         borderColor: 'green',
         options: {},
       }]
+      c3.update()
+
+      c2.data.labels = data.map(v => v[0])
+      c2.data.datasets = [{
+        label: 'Restant malade',
+        data: data.map(v => v[14]),
+        fill: false,
+        borderColor: 'blue',
+        options: {},
+      }]
       c.update()
+      c2.update()
     }
 
     if (window.localStorage.getItem('limity')) {
