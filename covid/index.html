@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Évolution de la mortalité dù au covid 19</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 </head>
 <body>
 <h1>Évolution de la mortalité dù au covid 19</h1>
@@ -16,6 +17,7 @@
 <input type="checkbox" id="limity"><label for="limity">Limiter entre -50% et +100%</label>
 <canvas id="myChart" width="800" height="400" style="max-width: 700px; max-height: 400px"></canvas>
 <canvas id="myChart3" width="800" height="400" style="max-width: 700px; max-height: 400px"></canvas>
+<input type="checkbox" id="logscale"><label for="logscale">Échelle logarithmique</label>
 <canvas id="myChart2" width="800" height="400" style="max-width: 700px; max-height: 400px"></canvas>
 Source : <a href="https://www.data.gouv.fr/fr/datasets/coronavirus-covid19-evolution-par-pays-et-dans-le-monde-maj-quotidienne/#_">data.gouv</a>
 <a href="pctgrowcovid.csv">Données</a>

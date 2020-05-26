@@ -24,7 +24,11 @@ fetch('pctgrowcovid.csv')
               callback: (v, a, b) => {
                 return `${v * 100} %`
               }
-            }
+            },
+            stacked: false,
+          }, {
+            position: 'right',
+            stacked: false,
           }],
           xAxes: [{
             scaleLabel: {
@@ -52,6 +56,9 @@ fetch('pctgrowcovid.csv')
                 return `${v * 100} %`
               }
             }
+          }, {
+            position: 'right',
+            stacked: false,
           }],
           xAxes: [{
             scaleLabel: {
@@ -130,6 +137,19 @@ fetch('pctgrowcovid.csv')
       toggleScaleofYAxe(e.target.checked)
     })
 
+    let logScaleElem = document.getElementById('logscale')
+
+    function toggleLogScale(v) {
+      window.localStorage.setItem('logscale', v)
+      c2.options.scales.yAxes[0].type = v ? 'logarithmic' : 'linear'
+
+      c2.update()
+    }
+
+    logScaleElem.addEventListener('click', (e) => {
+      toggleLogScale(e.target.checked)
+    })
+
     function displayDataForCountry(p) {
       window.localStorage.setItem('pays', p)
       const data = d.filter((v => v[1].indexOf(p) !== -1))
@@ -138,6 +158,7 @@ fetch('pctgrowcovid.csv')
         label: 'Mortalité',
         data: data.map(v => v[5]),
         fill: false,
+        yAxisID: 'y-axis-0',
         borderColor: 'lightBlue',
         options: {},
       }, {
@@ -145,6 +166,15 @@ fetch('pctgrowcovid.csv')
         data: data.map(v => v[7]),
         fill: false,
         borderColor: 'blue',
+        yAxisID: 'y-axis-0',
+        options: {},
+      }, {
+        label: 'Nouveau',
+        data: data.map(v => v[4]),
+        fill: false,
+        yAxisID: 'y-axis-1',
+        type: 'bar',
+        backgroundColor: 'darkYellow',
         options: {},
       }]
 
@@ -160,6 +190,14 @@ fetch('pctgrowcovid.csv')
         data: data.map(v => v[12]),
         fill: false,
         borderColor: 'green',
+        options: {},
+      }, {
+        label: 'Nouveau',
+        data: data.map(v => v[9]),
+        fill: false,
+        yAxisID: 'y-axis-1',
+        type: 'bar',
+        backgroundColor: 'darkYellow',
         options: {},
       }]
       c3.update()
@@ -183,6 +221,13 @@ fetch('pctgrowcovid.csv')
     if (window.localStorage.getItem('pays')) {
       selectPays.value =  window.localStorage.getItem('pays')
       displayDataForCountry(selectPays.value)
+    }
+    if (window.localStorage.getItem('logscale')) {
+      logScaleElem.checked =  window.localStorage.getItem('logscale')
+      toggleLogScale(logScaleElem.value)
+    } else {
+      logScaleElem.checked = true
+      toggleLogScale(logScaleElem.value)
     }
 
 
