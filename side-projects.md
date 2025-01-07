@@ -3,6 +3,21 @@ layout: page
 title: Side projects
 permalink: /side-projects/
 ---
+# Carte de pollution lumineuse de l'avex
+Mise en ligne des données actualisées de la carte de pollution lumineuse d'une association d'astronomie d'ile de france. Les données étaient distribuées par des archives conséquentes à télécharger et visualiser sur Google Earth. J'ai toujours préféré voir les infos directement dans le navigateur (web as a platform).
+ - [Carte interactive de pollution lumineuse de l'avex](https://avex-asso.org/dossiers/2024-nav) 
+ - [l'explication de texte/doc](https://www.avex-asso.org/dossiers/wordpress/la-pollution-lumineuse-light-pollution/carte-dynamique-et-interactives-de-la-pollution-lumineuse) 
+ - [Le code](https://framagit.org/wadouk/avex-pl)
+
+_QGis, VanillaJS, Map libre_
+
+# OpenFuelMap
+ - [le site](https://openfuelmap.net) 
+ - [Le code](https://framagit.org/PanierAvide/OpenFuelMap)
+
+Reprise de la maintenance et l'hébergement du site. Utilisation de l'open data du gouvernement pour trouver rapidement, simplement, librement tout en respectant votre vie privée les stations de carburant les plus près.
+
+_PostGIS, VanillaJS, Leaflet, NodeJS_
 
 # Ya-request-builder
 [Module node de request isomorphique ](https://www.npmjs.com/package/ya-request-builder)
