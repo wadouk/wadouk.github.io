@@ -1,0 +1,16 @@
+{{#if startDate}}
+  <div class="date">
+    <span class="startDate">{{startDate}}</span>
+    {{#if endDate}}
+      <span class="endDate">- {{endDate}}</span>
+    {{else}}
+      <span class="endDate">- En cours</span>
+    {{/if}}
+  </div>
+{{else}}
+  {{#if endDate}}
+  <div class="date">
+    <span class="endDate">{{endDate}}</span>
+  </div>
+  {{/if}}
+{{/if}}
