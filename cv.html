@@ -1,0 +1,66 @@
+---
+layout: raw
+title: CV
+permalink: /cv-nicolas-betheuil/
+---
+<head>
+    <script type="importmap">
+      {
+        "imports": {
+          "handlebars": "https://esm.sh/handlebars",
+          "date-fns": "https://esm.sh/date-fns"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
+</head>
+<body>
+
+<div id="app"><div class="progress-wrapper"><div class="progress"></div></div></div>
+<script type="module">
+    import Handlebars from 'handlebars'
+
+    const partials = ["awards",
+        "basics",
+        "certificates",
+        "date",
+        "education",
+        "interests",
+        "languages",
+        "projects",
+        "publications",
+        "references",
+        "skills",
+        "volunteer",
+        "work"
+    ].map(async p => {
+        const partial = await fetch(`/jsonresume-theme-stackoverflow-main/theme/partials/${p}.hbs`).then(t => t.text())
+        Handlebars.registerPartial(p, partial)
+    });
+    const helpers = [
+        "date-helpers",
+        "paragraph-split",
+        "space-to-dash",
+        "to-lower-case"]
+        .map(async h => {
+            const helper = (await import(`/jsonresume-theme-stackoverflow-main/theme/hbs-helpers/${h}.js`))
+            const helperName = h.split('-').map((v, i) => {
+                return (i === 0 ? v : `${v.at(0).toUpperCase()}${v.slice(1)}`)
+            }).join('')
+            Handlebars.registerHelper(helperName, helper[helperName])
+        });
+
+    const template = Handlebars.compile(await fetch("/jsonresume-theme-stackoverflow-main/resume.hbs").then(t => t.text()))
+
+    const theApp = fetch('https://gist.githubusercontent.com/wadouk/5b72a9671bfb52fb28ca496f3ecde24d/raw/resume.json')
+        .then(r => r.json())
+
+    Promise.all([theApp].concat(partials).concat(helpers))
+        .then(([resume, ...others]) => {
+            document.getElementById("app").innerHTML = template({resume})
+        })
+
+
+</script>
+
+</body>
