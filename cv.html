@@ -8,7 +8,8 @@ permalink: /cv-nicolas-betheuil/
       {
         "imports": {
           "handlebars": "https://esm.sh/handlebars",
-          "date-fns": "https://esm.sh/date-fns"
+          "date-fns": "https://esm.sh/date-fns",
+          "date-fns/locale": "https://esm.sh/date-fns/locale"
         }
       }
     </script>
@@ -24,6 +25,7 @@ permalink: /cv-nicolas-betheuil/
         "basics",
         "certificates",
         "date",
+        "date-raw",
         "education",
         "interests",
         "languages",
@@ -39,6 +41,7 @@ permalink: /cv-nicolas-betheuil/
     });
     const helpers = [
         "date-helpers",
+        "date-diff",
         "paragraph-split",
         "space-to-dash",
         "to-lower-case"]

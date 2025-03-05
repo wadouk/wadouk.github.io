@@ -350,13 +350,6 @@ section .location {
   font-weight: 600;
 }
 
-.company::before,
-.institution::before,
-.organization::before,
-.awarder::before {
-  content: "at ";
-}
-
 .company,
 .institution,
 .organization,
@@ -673,12 +666,6 @@ section .location {
   }
   .company a {
     color: #40484f;
-  }
-  .company::before,
-  .institution::before,
-  .organization::before,
-  .awarder::before {
-    content: "at ";
   }
   .main-summary {
     padding: 0;
