@@ -152,7 +152,7 @@ p {
 }
 
 a {
-  color: #0095ff;
+  color: #005b9b;
   text-decoration: none;
 }
 
@@ -180,7 +180,7 @@ h3 {
 }
 
 em {
-  color: #757575;
+  color: #585858;
 }
 
 strong {
@@ -204,7 +204,7 @@ strong {
 
 section .location {
   margin-right: 0.5em;
-  color: #606d76;
+  color: #4f5a61;
   font-weight: 700;
 }
 
@@ -275,11 +275,11 @@ section .location {
   margin: 0;
 }
 
-.section-title {
+h2.section-title {
   display: inline-block;
   background: #fff;
   padding: 0 1em 0.3em 0;
-  color: #ff6d1f;
+  color: #d14900;
   text-transform: uppercase;
   font-weight: 600;
   border: none;
@@ -354,13 +354,13 @@ section .location {
 .institution,
 .organization,
 .awarder {
-  color: #606d76;
+  color: #4f5a61;
   font-weight: 400;
 }
 
 .section header .date {
   display: flex;
-  color: #606d76;
+  color: #4f5a61;
   font-weight: 400;
 
   margin-left: 0;
@@ -393,7 +393,7 @@ section .location {
   padding: 4px 5px 5px;
   font-size: 0.9rem;
   line-height: 1;
-  color: #3e6d8e;
+  color: #2d4f67;
   background-color: #dfeaf1;
   border: 0 solid #dfeaf1;
   white-space: nowrap;
@@ -579,7 +579,7 @@ section .location {
 #references .item {
   padding-left: 0.5em;
   margin-bottom: 1em;
-  border-left: 5px solid #ff6d1f;
+  border-left: 5px solid #d14900;
 }
 
 .section > section > section {
@@ -814,7 +814,7 @@ div.progress:before {
   animation: progress-v6dzgy 2.4s infinite ease-in-out;
   content: '';
   position: absolute;
-  background-image: linear-gradient(0deg, transparent, transparent 50%, #ff6d1f 50%, #ff6d1f);
+  background-image: linear-gradient(0deg, transparent, transparent 50%, #d14900 50%, #d14900);
 }
 
 
