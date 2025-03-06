@@ -619,12 +619,6 @@ section .location {
   .section > section:not(.main-summary) {
     margin-left: 1.67rem;
   }
-  .company::before,
-  .institution::before,
-  .organization::before,
-  .awarder::before {
-    content: "| ";
-  }
   .header-left {
     float: left;
     width: 70%;
