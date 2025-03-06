@@ -9,11 +9,10 @@ permalink: /cv-nicolas-betheuil/
         "imports": {
           "handlebars": "https://esm.sh/handlebars",
           "date-fns": "https://esm.sh/date-fns",
-          "date-fns/locale": "https://esm.sh/date-fns/locale"
+          "date-fns/locale": "https://esm.sh/date-fns/locale",
+          "minisearch": "https://esm.sh/minisearch"
         }
       }
-
-
     </script>
     <link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
 </head>
@@ -65,8 +64,47 @@ permalink: /cv-nicolas-betheuil/
         .then(r => r.json())
 
     Promise.all([theApp].concat(partials).concat(helpers))
-        .then(([resume, ...others]) => {
+        .then(async ([resume, ...others]) => {
             document.getElementById("app").innerHTML = template({resume})
+
+            const MiniSearch = (await import('minisearch')).default
+            // Dictionnaire de synonymes
+            const synonyms = {
+                "java": ["scala"],
+                "scala": ["java"],
+                "maven": ["java"],
+                "spring": ["java"],
+                "JVM": ["java"],
+                "javascript": ["node", "express", "typescript", "vanillajs"],
+                "vanillajs": ["javascript"],
+                "postgis": ["postgresql"],
+                "node": ["nodejs", "mocha", "jasmine"],
+                "mocha": ["nodejs"],
+                "express": ["nodejs"],
+                "jasmine": ["nodejs", "javascript"]
+            };
+
+            // Ajout des synonymes à chaque élément
+            const expandSynonyms = (text) => {
+                return text.flatMap(word => [word.toLowerCase(), ...(synonyms[word.toLowerCase()] || [])]);
+            };
+            const minisearch = new MiniSearch({
+                idField: 'id',
+                fields: ['keywords'], // fields to index for full-text search
+                storeFields: ['id'], // fields to return with search results
+                extractField: (document, fieldName) => {
+                    const v = document[fieldName]
+                    if (Array.isArray(v)) {
+                        let synonyms1 = expandSynonyms(v);
+                        // console.log({v, synonyms1})
+                        return synonyms1.join(' ')
+                    } else {
+                        return v
+                    }
+                },
+            })
+
+            minisearch.addAll(resume.projects.map((n, j) => ({...n, id: j})))
 
             const projectHeader = document.querySelector("#projects").parentElement.querySelector("header .keywords")
 
@@ -85,14 +123,12 @@ permalink: /cv-nicolas-betheuil/
             })
 
             function filterProjectsByKeywords() {
+                const result = minisearch.search(Array.from(keywordFilters).join(' '))
+                console.log({result})
+
                 Array.from(document.querySelectorAll(".project-item"))
-                    .map(n => {
-                        const contain = Array.from(n.querySelectorAll(".keywords li"))
-                            .map(k => {
-                                return keywordFilters.has(k.innerText.toLowerCase().trim()) || keywordFilters.size === 0
-                            })
-                            .reduce((a, b) => a || b, false)
-                        n.classList[contain ? "remove" : "add"]("collapse")
+                    .map((n, j) => {
+                        n.classList[result.some(r => r.id === j) || keywordFilters.size === 0 ? "remove" : "add"]("collapse")
                     })
             }
 
@@ -101,7 +137,7 @@ permalink: /cv-nicolas-betheuil/
                     e.stopImmediatePropagation()
                     e.preventDefault()
 
-                    let keyword = e.target.innerText.toLowerCase().trim();
+                    let keyword = e.target.innerText;
                     const event = new Event('keyword')
                     event.keyword = keyword
                     event.has = keywordFilters.has(keyword)
