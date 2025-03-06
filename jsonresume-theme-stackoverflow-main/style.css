@@ -741,9 +741,8 @@ section .location {
   .highlights > li > p {
     margin-bottom: 0.3em;
   }
-  ul.keywords::before {
-    content: "Skills: ";
-    font-size: 1rem;
+  section:has(#skills) p {
+    display: none;
   }
   #skills .keywords::before {
     content: none;
