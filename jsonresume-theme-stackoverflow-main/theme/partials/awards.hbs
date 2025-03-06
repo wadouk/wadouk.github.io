@@ -11,11 +11,6 @@
           {{/if}}
 
           <header class="clear">
-            {{#if date}}
-              <div class="date">
-                {{dateHelpers date 'yyyy-MM'}}
-              </div>
-            {{/if}}
             <div class="header-left">
               {{#if title}}
                 <div class="title">
@@ -28,6 +23,12 @@
                 </div>
               {{/if}}
             </div>
+              {{#if date}}
+                  <div class="date">
+                      {{dateHelpers date 'yyyy-MM'}}
+                  </div>
+              {{/if}}
+
           </header>
 
           <div class="item">

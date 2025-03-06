@@ -11,11 +11,6 @@
       {{/if}}
 
       <header class="clear">
-         {{#if releaseDate}}
-        <span class="date">
-          {{dateHelpers releaseDate 'yyyy-MM'}}
-        </span>
-        {{/if}}
         <div class="header-left">
           {{#if name}}
           <span class="name">
@@ -35,7 +30,11 @@
           </span>
           {{/if}}
         </div>
-       
+          {{#if releaseDate}}
+              <span class="date">
+                  {{dateHelpers releaseDate 'yyyy-MM'}}
+              </span>
+          {{/if}}
       </header>
       {{#if keywords.length}}
       <ul class="keywords">

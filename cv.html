@@ -12,12 +12,18 @@ permalink: /cv-nicolas-betheuil/
           "date-fns/locale": "https://esm.sh/date-fns/locale"
         }
       }
+
+
     </script>
     <link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
 </head>
 <body>
 
-<div id="app"><div class="progress-wrapper"><div class="progress"></div></div></div>
+<div id="app">
+    <div class="progress-wrapper">
+        <div class="progress"></div>
+    </div>
+</div>
 <script type="module">
     import Handlebars from 'handlebars'
 
@@ -61,6 +67,48 @@ permalink: /cv-nicolas-betheuil/
     Promise.all([theApp].concat(partials).concat(helpers))
         .then(([resume, ...others]) => {
             document.getElementById("app").innerHTML = template({resume})
+
+            const projectHeader = document.querySelector("#projects").parentElement.querySelector("header .keywords")
+
+            const keywordFilters = new Set()
+
+            document.addEventListener('keyword', (e) => {
+                if (e.has) {
+                    keywordFilters.delete(e.keyword)
+                    Array.from(projectHeader.querySelectorAll("li")).filter(n => e.myTarget.innerText.trim().toUpperCase() === n.innerText.trim().toUpperCase()).map(n => n.remove())
+                } else {
+                    keywordFilters.add(e.keyword)
+                    let newNode = e.myTarget.cloneNode(true);
+                    projectHeader.appendChild(newNode)
+                }
+                filterProjectsByKeywords()
+            })
+
+            function filterProjectsByKeywords() {
+                Array.from(document.querySelectorAll(".project-item"))
+                    .map(n => {
+                        const contain = Array.from(n.querySelectorAll(".keywords li"))
+                            .map(k => {
+                                return keywordFilters.has(k.innerText.toLowerCase().trim()) || keywordFilters.size === 0
+                            })
+                            .reduce((a, b) => a || b, false)
+                        n.classList[contain ? "remove" : "add"]("collapse")
+                    })
+            }
+
+            document.querySelector("#app").addEventListener('click', e => {
+                if ("keywords" === e.target.parentElement.className) {
+                    e.stopImmediatePropagation()
+                    e.preventDefault()
+
+                    let keyword = e.target.innerText.toLowerCase().trim();
+                    const event = new Event('keyword')
+                    event.keyword = keyword
+                    event.has = keywordFilters.has(keyword)
+                    event.myTarget = e.target
+                    document.dispatchEvent(event)
+                }
+            })
         })
 
 

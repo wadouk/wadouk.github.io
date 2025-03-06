@@ -1,7 +1,9 @@
 {{#if resume.projects.length}}
 <section class="section">
   <header>
-    <h2 class='section-title'>Projets <span class="item-count">({{resume.projects.length}})</span></h2>
+    <h2 class='section-title'>Projets <span class="item-count">({{resume.projects.length}})</span>
+        <ul class="keywords"/>
+    </h2>
   </header>
   <section id="projects">
     {{#each resume.projects}}
@@ -11,7 +13,6 @@
       {{/if}}
       {{#if name}}
       <header class="clear">
-        {{> date startDate=startDate endDate=endDate }}
         {{#if name}}
         <div class="position">{{name}}</div>
         {{/if}}
@@ -25,6 +26,7 @@
           {{/each}}
           </span>
         {{/if}}
+          {{> date startDate=startDate endDate=endDate }}
       </header>
       {{/if}}
       {{#location}}

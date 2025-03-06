@@ -7,11 +7,6 @@
       {{#each resume.certificates}}
         <section class="certificate-item">
           <header class="clear">
-            {{#if date}}
-              <div class="date">
-                {{date}}
-              </div>
-            {{/if}}
             <div class="header-left">
               {{#if name}}
                 <div class="name">
@@ -24,6 +19,11 @@
                 </div>
               {{/if}}
             </div>
+              {{#if date}}
+                  <div class="date">
+                      {{date}}
+                  </div>
+              {{/if}}
           </header>
 
           <div class="item">

@@ -11,7 +11,6 @@
         <label for="education-item-{{@index}}"></label>
       {{/if}}
       <header class="clear">
-        {{> date-raw startDate=startDate endDate=endDate }}
         <div class="header-left">
           {{#if studyType}}
           <div class="studyType">
@@ -29,6 +28,7 @@
           </div>
           {{/if}}
         </div>
+          {{> date-raw startDate=startDate endDate=endDate }}
       </header>
 
       {{#location}}

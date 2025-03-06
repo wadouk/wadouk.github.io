@@ -359,11 +359,26 @@ section .location {
 }
 
 .section header .date {
-  display: block;
-  font-size: 1rem;
-  padding: 0.1em 0;
+  display: flex;
   color: #606d76;
   font-weight: 400;
+
+  margin-left: 0;
+  flex-grow: 1;
+  position: relative;
+}
+
+.certificate-item header .date, .publication-item header .date {
+  flex-grow: unset;
+}
+
+.header-left {
+  flex-grow: 1;
+}
+
+.section header .date :first-child {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .keywords,
@@ -382,6 +397,8 @@ section .location {
   background-color: #dfeaf1;
   border: 0 solid #dfeaf1;
   white-space: nowrap;
+
+  cursor: pointer;
 }
 
 .keywords li:hover,
@@ -573,10 +590,8 @@ section .location {
 *	HELPER CLASSES
 ******************/
 
-.clear::after {
-  content: "";
-  display: table;
-  clear: both;
+.clear {
+  display: flex;
 }
 
 .display {
@@ -593,8 +608,7 @@ section .location {
     width: 80%;
     margin: 0 auto;
   }
-  .section header .date {
-    float: right;
+  .section header .date {;
     font-weight: 600;
     color: #000;
   }
@@ -620,12 +634,7 @@ section .location {
     margin-left: 1.67rem;
   }
   .header-left {
-    float: left;
-    width: 70%;
     word-break: normal;
-  }
-  .section header .date {
-    padding: 0.2em;
   }
   .display {
     display: none;
@@ -846,4 +855,17 @@ div.progress:before {
   90%, 100% {
     background-position: 0 -70%;
   }
+}
+
+.project-item {
+  max-height: 1000px;
+  transition: all 0.3s ease-in;
+  background-color: white;
+  opacity: unset;
+}
+
+.collapse {
+  max-height: 0;
+  margin-bottom: 0 !important;
+  opacity: 0;
 }
