@@ -70,12 +70,11 @@ permalink: /cv-nicolas-betheuil/
             const MiniSearch = (await import('minisearch')).default
             // Dictionnaire de synonymes
             const synonyms = {
-                "java": ["scala"],
                 "scala": ["java"],
                 "maven": ["java"],
                 "spring": ["java"],
                 "JVM": ["java"],
-                "javascript": ["node", "express", "typescript", "vanillajs"],
+                "javascript": ["nodejs", "express", "vanillajs"],
                 "vanillajs": ["javascript"],
                 "postgis": ["postgresql"],
                 "node": ["nodejs", "mocha", "jasmine"],
@@ -91,12 +90,12 @@ permalink: /cv-nicolas-betheuil/
             const minisearch = new MiniSearch({
                 idField: 'id',
                 fields: ['keywords'], // fields to index for full-text search
-                storeFields: ['id'], // fields to return with search results
+                storeFields: ['id','keywords'], // fields to return with search results
                 extractField: (document, fieldName) => {
                     const v = document[fieldName]
                     if (Array.isArray(v)) {
                         let synonyms1 = expandSynonyms(v);
-                        // console.log({v, synonyms1})
+                        // console.log({diff: (Array.from((new Set(v.map(x => x.toLowerCase()))).symmetricDifference(new Set(synonyms1)).values()))})
                         return synonyms1.join(' ')
                     } else {
                         return v
@@ -124,7 +123,7 @@ permalink: /cv-nicolas-betheuil/
 
             function filterProjectsByKeywords() {
                 const result = minisearch.search(Array.from(keywordFilters).join(' '))
-                console.log({result})
+                // console.log({result})
 
                 Array.from(document.querySelectorAll(".project-item"))
                     .map((n, j) => {
