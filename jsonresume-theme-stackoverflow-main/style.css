@@ -660,6 +660,13 @@ h2.section-title {
   }
 }
 
+.item-count:before  {
+  content: '('
+}
+.item-count:after {
+  content: ')'
+}
+
 @media print {
   #profiles a:not(.hide-href-print)::after{
     content: " (" attr(href) ") ";

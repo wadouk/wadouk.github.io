@@ -1,16 +1,17 @@
 ---
 layout: raw
-title: CV
 permalink: /cv-nicolas-betheuil/
 ---
 <head>
+    <title>CV : Nicolas Bétheuil - Développeur senior</title>
     <script type="importmap">
       {
         "imports": {
           "handlebars": "https://esm.sh/handlebars",
           "date-fns": "https://esm.sh/date-fns",
           "date-fns/locale": "https://esm.sh/date-fns/locale",
-          "minisearch": "https://esm.sh/minisearch"
+          "minisearch": "https://esm.sh/minisearch",
+          "minisearch-synonyms": "https://esm.sh/minisearch-synonyms"
         }
       }
     </script>
@@ -63,72 +64,69 @@ permalink: /cv-nicolas-betheuil/
     const theApp = fetch('https://gist.githubusercontent.com/wadouk/5b72a9671bfb52fb28ca496f3ecde24d/raw/resume.json')
         .then(r => r.json())
 
+    const stopWordsQ = fetch('https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/refs/heads/master/stopwords-fr.json')
+        .then(r => r.json())
+        .then(j => new Set(j))
+
     Promise.all([theApp].concat(partials).concat(helpers))
-        .then(async ([resume, ...others]) => {
+        .then(async ([resume]) => {
             document.getElementById("app").innerHTML = template({resume})
+            return resume
+        })
+        .then(r => Promise.all([Promise.resolve(r), stopWordsQ, import('minisearch'), import('minisearch-synonyms')]))
+        .then(([resume, stopWords, {default: MiniSearch}, {default: Synonyms}]) => {
+            const synonyms = new Synonyms([
+                ["maven", "java", "spring", "JVM"],
+                ["postgis", "postgresql"],
+                ["javascript", "nodejs", "vanillajs", "express", "mocha", "jasmine"],
+                ["elastic search", "elasticsearch", "elk", "elastic"],
+                ['CI', 'jenkins', 'gitlab', 'integration'],
+                ['XP', 'scrum', 'TDD', 'BDD', 'test', 'tests']
+            ]);
 
-            const MiniSearch = (await import('minisearch')).default
-            // Dictionnaire de synonymes
-            const synonyms = {
-                "scala": ["java"],
-                "maven": ["java"],
-                "spring": ["java"],
-                "JVM": ["java"],
-                "javascript": ["nodejs", "express", "vanillajs"],
-                "vanillajs": ["javascript"],
-                "postgis": ["postgresql"],
-                "node": ["nodejs", "mocha", "jasmine"],
-                "mocha": ["nodejs"],
-                "express": ["nodejs"],
-                "jasmine": ["nodejs", "javascript"]
-            };
-
-            // Ajout des synonymes à chaque élément
-            const expandSynonyms = (text) => {
-                return text.flatMap(word => [word.toLowerCase(), ...(synonyms[word.toLowerCase()] || [])]);
-            };
             const minisearch = new MiniSearch({
                 idField: 'id',
-                fields: ['keywords'], // fields to index for full-text search
-                storeFields: ['id','keywords'], // fields to return with search results
+                fields: ['keywords', 'description', 'highlights'],// fields to index for full-text
+                storeFields: ['id', 'description', 'highlights', 'keywords', 'startDate', 'endDate'],// fields to return with search results
+                processTerms: (term) => stopWords.has(term) ? null : term.toLowerCase(),
                 extractField: (document, fieldName) => {
                     const v = document[fieldName]
-                    if (Array.isArray(v)) {
-                        let synonyms1 = expandSynonyms(v);
-                        // console.log({diff: (Array.from((new Set(v.map(x => x.toLowerCase()))).symmetricDifference(new Set(synonyms1)).values()))})
-                        return synonyms1.join(' ')
-                    } else {
-                        return v
-                    }
-                },
+                    return Array.isArray(v) ? v.join(' ') : v;
+                }
             })
 
             minisearch.addAll(resume.projects.map((n, j) => ({...n, id: j})))
 
-            const projectHeader = document.querySelector("#projects").parentElement.querySelector("header .keywords")
+            const projectHeader = document.querySelector("#projects").parentElement.querySelector("header");
+            const keywordsHeader = projectHeader.querySelector(".keywords")
 
-            const keywordFilters = new Set()
-
-            document.addEventListener('keyword', (e) => {
-                if (e.has) {
-                    keywordFilters.delete(e.keyword)
-                    Array.from(projectHeader.querySelectorAll("li")).filter(n => e.myTarget.innerText.trim().toUpperCase() === n.innerText.trim().toUpperCase()).map(n => n.remove())
-                } else {
-                    keywordFilters.add(e.keyword)
-                    let newNode = e.myTarget.cloneNode(true);
-                    projectHeader.appendChild(newNode)
-                }
-                filterProjectsByKeywords()
-            })
+            const getFiltersByKeywords = () => {
+                return new Set(new URL(document.URL).searchParams.getAll("q"))
+            }
 
             function filterProjectsByKeywords() {
-                const result = minisearch.search(Array.from(keywordFilters).join(' '))
+                const result = minisearch.search(synonyms.expandQuery(Array.from(getFiltersByKeywords()).join(' ')))
                 // console.log({result})
 
                 Array.from(document.querySelectorAll(".project-item"))
                     .map((n, j) => {
-                        n.classList[result.some(r => r.id === j) || keywordFilters.size === 0 ? "remove" : "add"]("collapse")
+                        n.classList[result.some(r => r.id === j) || getFiltersByKeywords().size === 0 ? "remove" : "add"]("collapse")
                     })
+
+                projectHeader.querySelector(".item-count").innerText = document.querySelectorAll(".project-item:not(.collapse)").length
+
+                let set = new Set(Array.from(keywordsHeader.querySelectorAll("li")).map(n => n.innerText));
+
+                set.difference(getFiltersByKeywords()).forEach(keyword => {
+                    Array.from(keywordsHeader.querySelectorAll("li")).filter(n => keyword.trim().toUpperCase() === n.innerText.trim().toUpperCase()).map(n => n.remove())
+                })
+                getFiltersByKeywords().difference(set).forEach(keyword => {
+                    const newNode = document.createElement("li")
+                    newNode.innerText = keyword
+                    keywordsHeader.appendChild(newNode)
+                })
+
+                return result
             }
 
             document.querySelector("#app").addEventListener('click', e => {
@@ -137,16 +135,18 @@ permalink: /cv-nicolas-betheuil/
                     e.preventDefault()
 
                     let keyword = e.target.innerText;
-                    const event = new Event('keyword')
-                    event.keyword = keyword
-                    event.has = keywordFilters.has(keyword)
-                    event.myTarget = e.target
-                    document.dispatchEvent(event)
+
+                    const url = new URL(document.URL)
+                    url.searchParams[url.searchParams.has("q", keyword) ? "delete" : "append"]("q", keyword)
+                    history.replaceState({k: keyword}, "", url.toString())
+                    filterProjectsByKeywords()
                 }
             })
+
+            if (getFiltersByKeywords().size !== 0) {
+                filterProjectsByKeywords()
+            }
         })
-
-
 </script>
 
 </body>
