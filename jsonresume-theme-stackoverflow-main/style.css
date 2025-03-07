@@ -350,6 +350,22 @@ h2.section-title {
   font-weight: 600;
 }
 
+.company::before,
+.entity::before,
+.institution::before,
+.organization::before,
+.awarder::before {
+  content: "\0000A0| ";
+}
+
+.company::after,
+.entity::after,
+.institution::after,
+.organization::after,
+.awarder::after {
+  content: "\0000A0";
+}
+
 .company,
 .institution,
 .organization,
