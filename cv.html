@@ -13,6 +13,7 @@ permalink: /cv-nicolas-betheuil/
       "minisearch-synonyms": "https://esm.sh/minisearch-synonyms"
     }
   }
+
 </script>
 <link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
 <body>
@@ -73,8 +74,8 @@ permalink: /cv-nicolas-betheuil/
             document.getElementById("app").innerHTML = template({resume})
             return resume
         })
-        .then(r => Promise.all([Promise.resolve(r), stopWordsQ, import('minisearch'), import('minisearch-synonyms')]))
-        .then(([resume, stopWords, {default: MiniSearch}, {default: Synonyms}]) => {
+        .then(r => Promise.all([Promise.resolve(r), stopWordsQ, import('minisearch'), import('minisearch-synonyms'), import('date-fns'), import('date-fns/locale')]))
+        .then(([resume, stopWords, {default: MiniSearch}, {default: Synonyms}, dateFns, {fr}]) => {
             const synonyms = new Synonyms([
                 ["maven", "java", "spring", "JVM"],
                 ["postgis", "postgresql"],
@@ -104,9 +105,22 @@ permalink: /cv-nicolas-betheuil/
                 return new Set(new URL(document.URL).searchParams.getAll("q"))
             }
 
+            function durationOfProjects(result) {
+                if (!result || result.length === 0)
+                    return ""
+
+                const {years, months} = result.map(r => [r.startDate, r.endDate].map(d => d ? dateFns.parseISO(d) : null))
+                    .map(([d1, d2]) => d1 && d2 ? dateFns.intervalToDuration(dateFns.interval(d1, d2)) : {months: 1})
+                    .reduce((a, b) => ({
+                        years: a.years + (b.years || 0),
+                        months: a.months + (b.months || 0)
+                    }), {years: 0, months: 0})
+
+                return dateFns.formatDuration({years : years + Math.round(months / 12), months: (months + 1) % 12}, {locale: fr})
+            }
+
             function filterProjectsByKeywords() {
                 const result = minisearch.search(synonyms.expandQuery(Array.from(getFiltersByKeywords()).join(' ')))
-                // console.log({result})
 
                 Array.from(document.querySelectorAll(".project-item"))
                     .map((n, j) => {
@@ -114,11 +128,14 @@ permalink: /cv-nicolas-betheuil/
                     })
 
                 projectHeader.querySelector(".item-count").innerText = document.querySelectorAll(".project-item:not(.collapse)").length
+                projectHeader.querySelector(".item-duration").innerText = durationOfProjects(result)
 
                 let set = new Set(Array.from(keywordsHeader.querySelectorAll("li")).map(n => n.innerText));
 
                 set.difference(getFiltersByKeywords()).forEach(keyword => {
-                    Array.from(keywordsHeader.querySelectorAll("li")).filter(n => keyword.trim().toUpperCase() === n.innerText.trim().toUpperCase()).map(n => n.remove())
+                    Array.from(keywordsHeader.querySelectorAll("li"))
+                        .filter(n => keyword.trim().toUpperCase() === n.innerText.trim().toUpperCase())
+                        .map(n => n.remove())
                 })
                 getFiltersByKeywords().difference(set).forEach(keyword => {
                     const newNode = document.createElement("li")
