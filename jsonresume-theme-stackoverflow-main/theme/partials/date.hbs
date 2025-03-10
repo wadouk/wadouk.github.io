@@ -1,10 +1,10 @@
 {{#if startDate}}
   <div class="date">
-    <span class="startDate">{{dateHelpers startDate 'yyyy-MM'}}</span>
+    <span class="startDate">{{dateHelpers startDate 'yyyy-MM'}}&nbsp;</span>
     {{#if endDate}}
-      <span class="endDate">&ndash;{{dateHelpers endDate 'yyyy-MM'}} {{dateDiff startDate endDate}}</span>
+      <span class="endDate">&ndash; {{dateHelpers endDate 'yyyy-MM'}} {{dateDiff startDate endDate}}</span>
     {{else}}
-      <span class="endDate">&ndash;En cours {{dateDiff startDate 'now'}}</span>
+      <span class="endDate">&ndash; En cours {{dateDiff startDate 'now'}}</span>
     {{/if}}
   </div>
 {{else}}

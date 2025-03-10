@@ -1,22 +1,20 @@
 ---
 layout: raw
-Title: CV : Nicolas Bétheuil - Développeur senior
+title: CV
 permalink: /cv-nicolas-betheuil/
 ---
-<head>
-    <script type="importmap">
-      {
-        "imports": {
-          "handlebars": "https://esm.sh/handlebars",
-          "date-fns": "https://esm.sh/date-fns",
-          "date-fns/locale": "https://esm.sh/date-fns/locale",
-          "minisearch": "https://esm.sh/minisearch",
-          "minisearch-synonyms": "https://esm.sh/minisearch-synonyms"
-        }
-      }
-    </script>
-    <link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
-</head>
+<script type="importmap">
+  {
+    "imports": {
+      "handlebars": "https://esm.sh/handlebars",
+      "date-fns": "https://esm.sh/date-fns",
+      "date-fns/locale": "https://esm.sh/date-fns/locale",
+      "minisearch": "https://esm.sh/minisearch",
+      "minisearch-synonyms": "https://esm.sh/minisearch-synonyms"
+    }
+  }
+</script>
+<link rel="stylesheet" href="/jsonresume-theme-stackoverflow-main/style.css">
 <body>
 
 <div id="app">
@@ -26,6 +24,8 @@ permalink: /cv-nicolas-betheuil/
 </div>
 <script type="module">
     import Handlebars from 'handlebars'
+
+    document.title = "CV : Nicolas Bétheuil Développeur senior"
 
     const partials = ["awards",
         "basics",

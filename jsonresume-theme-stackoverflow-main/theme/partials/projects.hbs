@@ -10,7 +10,6 @@
       {{#if summary}}
         <label for="project-item-{{@index}}"></label>
       {{/if}}
-      {{#if name}}
       <header class="clear">
         {{#if name}}
         <div class="position">{{name}}</div>
@@ -27,7 +26,6 @@
         {{/if}}
           {{> date startDate=startDate endDate=endDate }}
       </header>
-      {{/if}}
       {{#location}}
       <span class="location">
       <span class="fa-solid fa-location-dot"></span>
