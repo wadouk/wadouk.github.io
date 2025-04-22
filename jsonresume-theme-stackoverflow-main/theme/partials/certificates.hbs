@@ -4,7 +4,7 @@
       <h2 class="section-title">Diplômes</h2>
     </header>
     <section id="certificates">
-      {{#each resume.certificates}}
+      {{#each (sort 'date' resume.certificates)}}
         <section class="certificate-item">
           <header class="clear">
             <div class="header-left">

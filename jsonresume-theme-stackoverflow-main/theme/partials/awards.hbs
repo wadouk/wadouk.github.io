@@ -4,7 +4,7 @@
       <h2 class="section-title">Awards <span class="item-count">{{resume.awards.length}}</span></h2>
     </header>
     <section id="awards">
-      {{#each resume.awards}}
+      {{#each (sort 'date' resume.awards)}}
         <section class="award-item">
           {{#if summary}}
             <label for="award-item-{{@index}}"></label>

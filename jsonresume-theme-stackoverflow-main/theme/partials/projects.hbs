@@ -5,7 +5,7 @@
       <ul class="keywords"></ul>
   </header>
   <section id="projects">
-    {{#each resume.projects}}
+    {{#each (sort 'endDate' resume.projects)}}
     <section class="project-item">
       {{#if summary}}
         <label for="project-item-{{@index}}"></label>

@@ -4,7 +4,7 @@
     <h2 class='section-title'>Publications</h2>
   </header>
   <section id="publications">
-    {{#each resume.publications}}
+    {{#each (sort 'releaseDate' resume.publications)}}
     <section class="publication-item">
       {{#if summary}}
       <label for="publication-item-{{@index}}"></label>

@@ -5,7 +5,7 @@
   </header>
 
   <section id="education">
-    {{#each resume.education}}
+    {{#each (sort 'endDate' resume.education)}}
     <section class="education-item">
       {{#if summary}}
         <label for="education-item-{{@index}}"></label>
